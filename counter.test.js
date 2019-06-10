@@ -1,4 +1,7 @@
 const counter = require('./counter');
+const addCounter = require('./addCounter');
+const removeCounter = require('./removeCounter');
+const incrementCounter = require('./incrementCounter');
 
 test('test1', () => {
   expect(
@@ -25,4 +28,28 @@ test('test5', () => {
     counter(undefined, {})).toEqual(0);
 });
 
-  console.log("tests passed!");
+test('add counter', () => {
+  const listBefore = [];
+  const listAfter = [0];
+  //deepFreeze(listBefore);
+  expect(
+    addCounter(listBefore)).toEqual(listAfter);
+});
+
+test('remove counter', () => {
+  const listBefore = [0, 10, 20];
+  const listAfter = [0, 20];
+  //deepFreeze(listBefore);
+  expect(
+    removeCounter(listBefore, 1)).toEqual(listAfter);
+});
+
+test('increment counter', () => {
+  const listBefore = [0, 10, 20];
+  const listAfter = [0, 11, 20];
+  //deepFreeze(listBefore);
+  expect(
+    incrementCounter(listBefore, 1)).toEqual(listAfter);
+});
+
+console.log("tests passed!");
